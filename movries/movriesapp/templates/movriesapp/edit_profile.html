@@ -1,0 +1,24 @@
+{% extends 'movriesapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="edit-profile">
+    <form method="post" enctype="multipart/form-data" class="edit-profile-form">
+        {% csrf_token %}
+        {% for f in form %}
+            <div>
+                <div><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label></div>
+                <div>{{ f }}</div>
+                <div class="form-error">{{ f.errors }}</div>
+            </div>
+        {% endfor %}
+
+
+        <button type="submit" class="login-submit">Сохранить</button>
+    </form>
+</div>
+
+
+
+{% endblock %}

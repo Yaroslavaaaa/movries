@@ -1,0 +1,100 @@
+{% extends 'movriesapp/base.html' %}
+
+{% block content %}
+
+<div class="movie">
+    <div class="info-content">
+
+        <div class="info" style="background-image: url('../../static/movriesapp/images/Union1.png')">
+            <h2 class="movie-name">{{movie.title}}</h2>
+            <div class="photo-and-info">
+                <img src="{{movie.image.url}}" alt="" class="movie-image">
+                <div class="about-movie-info">
+                    <div class="about-movie">О {{movie.category}}е:</div>
+                    <div class="year"><span class="bold-text">Год: </span> {{movie.year}}</div>
+                    <div class="year"><span class="bold-text">Страна: </span> {{movie.country}}</div>
+                    <div class="year"><span class="bold-text">Жанр: </span>  {{movie.genre}}</div>
+                    <div class="year"><span class="bold-text">Режиссер: </span> {{movie.director}}</div>
+                    <div class="year"><span class="bold-text">Сценарист: </span> {{movie.screenwriter}}</div>
+                    <div class="year"><span class="bold-text">Продюсер: </span> {{movie.produser}}</div>
+                    <div class="year"><span class="bold-text">Длительность: </span> {{movie.duration}} минут</div>
+                </div>
+            </div>
+
+            <div class="descriptiond-and-actors">
+                <div class="description">
+                    <div class="bold-text">Описание</div>
+                    {{movie.description}}
+                </div>
+                <div class="actors">
+                    <div class="bold-text">В главных ролях</div>
+                    {% for actor in movie.actors.all %}
+                    <div>{{ actor }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+        </div>
+
+        <!--         <div class="line">n,</div>-->
+
+        <div class="block-comments">
+
+            <h3 class="title">Оставить комментарий</h3>
+            <div class="comments">
+
+                {% include 'movriesapp/elements/add_comment_form.html' %}
+
+            </div>
+
+
+            <div class="comments-list">
+                {% for c in comments %}
+                <div class="one-comment">
+                    <div>
+                        <img class="avatar-com" src="{{ c.user.avatar.url }}">
+                    </div>
+                    <div class="user-and-text">
+                        <div class="user-comment">
+                            <div>{{c.user}}</div>
+                        </div>
+                        <div class="text-comment">
+                            <div>{{c}}</div>
+                        </div>
+                        <button data-id="{{ c.id }}" class="reply-btn">Ответить</button>
+                        {% include 'movriesapp/elements/ans_comment_form.html' %}
+                    </div>
+
+                </div>
+
+
+                <div>
+                    {% if c.comments_ans.all %}
+                    {% for child in c.comments_ans.all %}
+                    <div class="ans-com">
+                        <div>
+                            <img class="avatar-com ans-com-avatar" src="{{ child.user_com_ans.avatar.url }}">
+                        </div>
+                        <div class="user-and-text">
+                            <div class="user-comment">
+                                <div>{{child.user_com_ans.username}}</div>
+                            </div>
+                            <div class="text-comment">
+                                <div>{{ child.ans_com_text }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                </div>
+                {% endfor %}
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

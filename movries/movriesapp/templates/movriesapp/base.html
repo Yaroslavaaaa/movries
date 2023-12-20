@@ -1,0 +1,129 @@
+{% load static %}
+{% load movies_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../../static/movriesapp/images/logo2.png">
+    <title>{{ title }}</title>
+    <link type="text/css" href="{% static 'movriesapp/css/index.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'movriesapp/css/katalog.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'movriesapp/css/movie_info.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'movriesapp/css/login.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'movriesapp/css/profile.css' %}" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.min.css">
+
+
+    <script src="{% static 'movriesapp/js/index.js' %}" defer></script>
+    <!--    <script src="{% static 'movriesapp/js/libs/gsap/gsap.min.js' %}" defer></script>-->
+    <!--    <script src="{% static 'movriesapp/js/libs/gsap/ScrollSmoother.min.js' %}" defer></script>-->
+    <!--    <script src="{% static 'movriesapp/js/libs/gsap/ScrollTrigger.min.js' %}" defer></script>-->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/ScrollTrigger.min.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.pkgd.min.js"></script>
+
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="content">
+        <div class="container">
+
+            <div class="navbar">
+                <div class="left">
+                    <a href="{% url 'index' %}"><img src="../../static/movriesapp/images/logo1.png" alt="" class="logo"></a>
+                    <div class="katalog"><a href="{% url 'katalog'  %}" class="katalog-link">Каталог фильмов</a></div>
+                    {% if request.user.is_authenticated and user.role.pk == 2 %}
+                        <div class="admin"><a href="{% url 'admin:index' %}" class="admin-link">Админ панель</a></div>
+                    {% endif %}
+                </div>
+                <div class="right">
+
+                    {% if 'katalog' not in request.path and 'search_result' not in request.path and 'genre' not in request.path %}
+                    <div class="search-form">
+                         <form action="{% url 'search_results' %}" method="get">
+                             <input type="search" name="q" class="search" placeholder="Название фильма">
+                             <button type="submit" class="search-button">
+                                 <img src="../../static/movriesapp/images/search.png" alt="">
+                             </button>
+                         </form>
+                     </div>
+                    {% endif %}
+
+
+                    {% if request.user.is_authenticated %}
+                    <div class="user-log">
+                        <div class="login-logout">
+                            <a class="nav-link"
+                               href="{% url 'profile' user_username=user.username %}">{{user.username}}</a>
+                        </div>
+                        <div class="login-logout">
+                            <a class="nav-link" href="{% url 'logout_user_page' %}">Выйти</a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="user-log">
+                        <div class="login-logout">
+                            <a class="nav-link" href="{% url 'register' %}">Регистрация</a>
+                        </div>
+                        <div class="login-logout">
+                            <a class="nav-link" href="{% url 'login_user_page' %}">Войти</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+
+            {% block content %}
+
+            {% endblock %}
+
+
+            <footer class="footer">
+                <div class="footer-content">
+                    <div class="connection">
+                        <div class="text">Связаться с нами</div>
+                        <div class="email"><img src="../../static/movriesapp/images/email-icon.png" alt="" class="icon">
+                            example@gmail.com
+                        </div>
+                        <div class="phone"><img src="../../static/movriesapp/images/phone-icon.png" alt="" class="icon">
+                            8-888-888-88-88
+                        </div>
+                    </div>
+                    <div class="social">
+                        <div class="text">Мы в соцсетях</div>
+                        <div class="icons">
+                            <div class="icon"><img src="../../static/movriesapp/images/instagram.png" alt=""></div>
+                            <div class="icon"><img src="../../static/movriesapp/images/facebook.png" alt=""></div>
+                            <div class="icon"><img src="../../static/movriesapp/images/whatsapp.png" alt=""></div>
+                            <div class="icon"><img src="../../static/movriesapp/images/youtube.png" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="subscription">
+                        <div class="text">Подпишитесь на обновления и изнавайте о новостях в мире кино первыми</div>
+                        <div class="subscription-form">
+                            <input type="email" name="email" id="" placeholder="example@gmail.com"
+                                   class="subscription-email">
+                            <input type="submit" value="Подписаться" class="subscription-submit">
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+
+        </div>
+    </div>
+</div>
+</body>
+
+
+</html>

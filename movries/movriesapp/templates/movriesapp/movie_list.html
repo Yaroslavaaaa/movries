@@ -1,0 +1,18 @@
+<form method="get" action="{% url 'movie_list' %}">
+    {{ filter_form.as_p }}
+    <label for="id_release_year">Release Year:</label>
+    <select name="release_year" id="id_release_year">
+        <option value="">All</option>
+        {% for year_value, year_label in filter_form.fields.release_year.choices %}
+            <option value="{{ year_value }}" {% if filter_form.cleaned_data.release_year == year_value %}selected{% endif %}>
+                {{ year_label }}
+            </option>
+        {% endfor %}
+    </select>
+    <button type="submit">Filter</button>
+</form>
+
+{% for movie in movies %}
+    <h2>{{ movie.title }}</h2>
+    <!-- Display other movie details here -->
+{% endfor %}

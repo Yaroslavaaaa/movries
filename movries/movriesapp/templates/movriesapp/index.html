@@ -1,0 +1,92 @@
+{% extends 'movriesapp/base.html' %}
+
+{% block content %}
+
+<div class="content">
+    <div class="main-container">
+        <div class="layers">
+            <div class="main-title-text" style="background-image: url(../../static/movriesapp/images/blurmovries.png);">
+                MOVRIES
+            </div>
+            <div class="banner-text">
+                <div class="title1">
+                    Открой для себя невероятные фильмы и сериалы на Movries!
+                </div>
+                <div class="title2">
+                    Узнай какие фильмы и сериалы стоит посмотреть чтобы окунуться в мир захватывающих сюжетов и
+                    неповторимой атмосферы
+                </div>
+            </div>
+            <div class="image-background"
+                 style="background-image: url(../../static/movriesapp/images/background.png) ;"></div>
+        </div>
+    </div>
+    <div class="block-premiers">
+        <div class="premier-title">
+            Премьеры этой недели
+        </div>
+        <div class="premier-content">
+            <div class="gallery js-flickity"
+                 data-flickity-options='{ "wrapAround": true, "imagesLoaded": true }'>
+                <div class="gallery-cell">
+                    <a href="http://127.0.0.1:8000/movie/silikonovaya-dolina/">
+                        <img src="../../static/movriesapp/images/600x900%20(6).webp" alt="" class="premier-image">
+                    </a>
+                </div>
+                <div class="gallery-cell">
+                    <a href="http://127.0.0.1:8000/movie/vo-vse-tyazhkie/">
+                        <img src="../../static/movriesapp/images/600x900%20(5).webp" alt="" class="premier-image">
+                    </a>
+                </div>
+                <div class="gallery-cell">
+                    <a href="http://127.0.0.1:8000/movie/kapitan-marvel-2/">
+                        <img src="../../static/movriesapp/images/marvel1.png" alt="" class="premier-image">
+                    </a>
+                </div>
+                <div class="gallery-cell">
+                    <a href="http://127.0.0.1:8000/movie/pyat-nochej-s-freddi/">
+                        <img src="../../static/movriesapp/images/fnaf.jpg" alt="" class="premier-image">
+                    </a>
+                </div>
+                <div class="gallery-cell">
+                    <a href="http://127.0.0.1:8000/movie/tajna-koko/">
+                        <img src="../../static/movriesapp/images/600x900%20(8).webp" alt="" class="premier-image">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="block-popular">
+        <div class="popular-title">Популярное</div>
+        <div class="popular-content">
+            <a href="http://127.0.0.1:8000/movie/mstiteli-final/"><img src="../../static/movriesapp/images/600x900.webp" alt="" class="popular-image" height="300vh"></a>
+            <a href="http://127.0.0.1:8000/movie/sverhestestvennoe/"><img src="../../static/movriesapp/images/600x900%20(1).webp" alt="" class="popular-image" height="300vh"></a>
+            <a href="http://127.0.0.1:8000/movie/shrek/"><img src="../../static/movriesapp/images/600x900%20(2).webp" alt="" class="popular-image" height="300vh"></a>
+            <a href="http://127.0.0.1:8000/movie/zelenaya-milya/"><img src="../../static/movriesapp/images/600x900%20(3).webp" alt="" class="popular-image" height="300vh"></a>
+        </div>
+    </div>
+    <div class="block-recommendations">
+        <div class="recommendations-title">Рекомендуем</div>
+        <div class="recommendations-content">
+            <div class="recommendation-card">
+                <img src="../../static/movriesapp/images/marvel1.png" alt="" class="recommendations-image"
+                     height="400px">
+                <a href="http://127.0.0.1:8000/movie/kapitan-marvel-2/" class="more">
+                    <button class="more-button">Подробнее</button>
+                </a>
+            </div>
+            <div class="recommendation-card">
+                <img src="../../static/movriesapp/images/fnaf.jpg" alt="" class="recommendations-image"
+                     height="400px">
+                <a href="http://127.0.0.1:8000/movie/pyat-nochej-s-freddi/" class="more">
+                    <button class="more-button">Подробнее</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

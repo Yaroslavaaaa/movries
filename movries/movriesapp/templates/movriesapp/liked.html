@@ -1,0 +1,100 @@
+{% extends 'movriesapp/base.html' %}
+{% load movies_tags %}
+{% block content %}
+
+
+<div class="search-form-katalog">
+    <form action="{% url 'search_results' %}" method="get">
+        <input type="search" name="q" class="search" placeholder="Название фильма">
+        <button type="submit" class="search-button">
+            <img src="../../static/movriesapp/images/search.png" alt="">
+        </button>
+    </form>
+</div>
+
+<div class="katalog-content">
+
+
+    <div class="filters">
+
+
+
+
+
+    </div>
+    <!--    <div class="cards">-->
+    <div class="cards">
+        {% for m in movies %}
+        <div class="card">
+            <div href="{% url 'movie_info' movie_slug=m.slug %}" class="card-content">
+                <img src="{{m.image.url}}" class="card__image" alt=""/>
+                <div class="card__overlay">
+                    <div class="card__header">
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                            <path/>
+                        </svg>
+                        <!--              <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />-->
+                        <div class="card__header-text">
+                            <a href="{% url 'movie_info' movie_slug=m.slug %}" class="card__title">{{m.title}}</a>
+                            <!--                <span class="card__status">1 hour ago</span>-->
+                        </div>
+                    </div>
+                    <div class="more-inf">
+                        <p class="card__description">{{m.year}} </p>
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'unlike' m.pk %}">
+                            {% if m.id in liked_movie_ids %}
+                            <img id="like" src="../../static/movriesapp/images/liked.png" alt="" class="like">
+                            {% else %}
+                            <img id="liked" src="../../static/movriesapp/images/like.png" alt="" class="like">
+                            {% endif %}
+                        </a>
+                        {% else %}
+                        <img src="../../static/movriesapp/images/like.png" alt="" class="like">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+
+    </div>
+
+    <!--    </div>-->
+
+
+
+
+</div>
+
+    {% if page_obj.has_other_pages %}
+    <nav class="list-pages">
+        <ul>
+            {% if page_obj.has_previous %}
+            <li class="page-num">
+                <a href="?page={{ page_obj.previous_page_number }}">&lt;</a>
+            </li>
+            {% endif %}
+
+            {% for p in paginator.page_range %}
+            {% if page_obj.number == p %}
+            <li class="page-num page-num-selected">{{ p }}</li>
+            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+            <li class="page-num">
+                <a href="?page={{ p }}">{{ p }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+            <li class="page-num">
+                <a href="?page={{ page_obj.next_page_number }}">&gt;</a>
+            </li>
+            {% endif %}
+
+        </ul>
+    </nav>
+    {% endif %}
+
+{% endblock %}

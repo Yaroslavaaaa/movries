@@ -1,0 +1,218 @@
+.info-content{
+    position: relative;
+}
+
+.info-content::after{
+    content: "";
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: calc(var(--index)*10);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    bottom: calc(var(--index)*-4.5);
+    overflow: hidden;
+}
+
+.info{
+    height: 131vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative;
+    padding: calc(var(--index)*5) 0 calc(var(--index)*11) calc(var(--index)*11);
+    margin-top: calc(var(--index));
+}
+
+.movie-name{
+    margin-left: calc(var(--index)*20);
+    /*margin-top: calc(var(--index));*/
+}
+
+
+.photo-and-info{
+    display: grid;
+    grid-template-columns: 4fr 8fr;
+}
+
+.movie-image{
+    margin-left: calc(var(--index));
+    width: calc(var(--index)*11);
+    border-radius: calc(var(--index)/2);
+    margin-top: calc(var(--index)*-2);
+}
+
+.about-movie-info{
+    margin-top: calc(var(--index)*4);
+    color: #000;
+}
+
+.year{
+    margin-top: calc(var(--index)/2);
+}
+
+.about-movie{
+    margin-bottom: calc(var(--index));
+}
+
+
+.bold-text, .about-movie{
+    font-weight: bold;
+}
+
+.descriptiond-and-actors{
+    color: black;
+    margin-top: calc(var(--index)*10);
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+}
+
+.description{
+    margin-right: calc(var(--index)*8);
+}
+
+.actors{
+    margin-left: calc(var(--index)*5);
+}
+
+line{
+    width: 100vw;
+    height: calc(var(--index)*5);
+    background-color: white;
+    margin-top: calc(var(--index)*5);
+}
+
+.block-comments{
+    margin-top: calc(var(--index)*5);
+}
+
+.year{
+    display: flex;
+}
+
+
+
+
+.input-comment{
+
+    /*width: 90%;*/
+    height: calc(var(--index)*15);
+    width: calc(var(--index)*30);
+    /*margin-left: 5%;*/
+    margin-top: 20px;
+    border-radius: 2vh;
+    background-color: #fff;
+    /*border: solid 2px #B75C29;*/
+    margin-bottom: 1vh;
+    padding: 10px;
+
+}
+
+
+.block-comments{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+.button-c{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+.submit-comment{
+    background-color: #FFD700;
+    width: 12vw;
+    height: 5vh;
+    border: solid 2px #FFD700;
+    margin-top: 3vh;
+    color: #000;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+.avatar-com{
+    width: calc(var(--index)*6);
+    height: calc(var(--index)*6);
+    border-radius: 100%;
+}
+
+
+.one-comment, .ans-com{
+    display: flex;
+
+    margin-bottom: 5vh;
+    padding: 2vh;
+    width: calc(var(--index)*55);
+    border-radius: 2vh;
+}
+
+.ans-com{
+    margin-left: 6vw;
+    width: 60vw;
+}
+
+.user-and-text{
+    margin-left: 1vw;
+}
+
+.user-comment{
+    font-weight: bold;
+    font-size: calc(var(--index)*1.1);
+}
+
+
+.text-comment{
+    margin-top: calc(var(--index));
+}
+
+.reply-btn{
+    border: none;
+    background-color: #FFD700;
+    cursor: pointer;
+    width: calc(var(--index)*6);
+    height: calc(var(--index)*1.5);
+    margin-top: calc(var(--index)*2);
+    /*margin-left: 52vw;*/
+    color: #000;
+    z-index: 1000;
+    border-radius: 1000px;
+}
+
+
+
+
+
+
+.input-ans-comment{
+
+    /*width: 90%;*/
+    height: calc(var(--index)*10);
+    width: calc(var(--index)*35);
+    margin-left: calc(var(--index)*5);
+    margin-top: 20px;
+    border-radius: 2vh;
+    background-color: #fff;
+    margin-bottom: 1vh;
+    padding: 10px;
+
+}
+
+
+
+
+

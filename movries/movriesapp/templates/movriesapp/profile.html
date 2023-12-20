@@ -1,0 +1,65 @@
+{% extends 'movriesapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="profile">
+    <div class="user-profile">
+        <div class="info-profile" style="background-image: url('../../static/movriesapp/images/login-background.png')">
+            <div>
+                <img class="avatar_image" src="{{user.avatar.url}}">
+            </div>
+            <div class="user-info">
+                <div class="nickname">
+                    <h1>{{user.username}}</h1>
+                    <div class="logout">
+                        <a href="{% url 'logout_user_page' %}" class="logout-link">Выйти</a>
+                    </div>
+                </div>
+
+                {% if user.age %}
+                <div class="user-age">
+                    <span class="bold-text">Возраст:</span> {{user.age}}
+                </div>
+                {% endif %}
+                <div class="edit-profile-link">
+                    <a class="edit-profile-link" href="{% url 'edit_profile' user_username=user.username %}">Редактировать профиль</a>
+                </div>
+                <div class="liked-movies-button">
+                    <a href="{% url 'liked_movies' %}" class="liked-movies-link">Список любимых фильмов</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+<!--<div class="login-content">-->
+<!--    <div class="login">-->
+
+<!--        <div class="info-login" style="background-image: url('../../static/movriesapp/images/login-background.png')">-->
+<!--            <div class="login-text">Авторизация</div>-->
+<!--            <div class="login-form">-->
+<!--            <form method="post">-->
+<!--                {% csrf_token %}-->
+<!--                {% for f in form %}-->
+<!--                <div><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label></div>-->
+<!--                <div>{{ f }}</div>-->
+<!--                <div class="form-error">{{ f.errors }}</div>-->
+<!--                {% endfor %}-->
+<!--                <button type="submit" class="login-submit">Войти</button>-->
+<!--            </form>-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
